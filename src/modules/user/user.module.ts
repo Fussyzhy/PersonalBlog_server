@@ -3,13 +3,14 @@ import { User } from './user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
+import { EmailService } from '../email/email.service';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),// 注册实体
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, EmailService],
   exports: [UserService],
 })
 

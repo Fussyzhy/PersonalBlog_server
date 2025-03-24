@@ -26,4 +26,10 @@ export class UserController {
   deleteUser(@Param('id',ParseIntPipe) id: number) {
     return this.userService.deleteUser(id);
   }
+
+  @Post('getEmail')
+  @Public()
+  getEmail(@Body() body) {
+    return this.userService.sendVerificationCode(body.email);
+  }
 }

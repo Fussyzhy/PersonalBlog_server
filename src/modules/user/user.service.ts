@@ -4,12 +4,14 @@ import { User } from "./user.entity";
 import { Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./create-user.dto";// 导入 DTO, 用于验证数据, 防止恶意请求
 import * as md5 from 'md5';
+import { EmailService } from "../email/email.service";
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    private readonly emailService: EmailService, // 注入 EmailService
   ) {}
 
   // 查询用户
@@ -42,4 +44,12 @@ export class UserService {
   findByUsername(username: string) {
     return this.userRepository.findOneBy({ username });
   }
+
+  // 发送注册验证码
+  async sendVerificationCode(email: string) {
+    const code = Math.random().toString().slice(2, 6); // 生成 4 位随机验证码
+    await this.emailService.sendVerificationEmail(email, code); // 发送验证码邮件
+    return code;
+  }
+  
 }
