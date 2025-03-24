@@ -32,4 +32,10 @@ export class UserController {
   getEmail(@Body() body) {
     return this.userService.sendVerificationCode(body.email);
   }
+
+  @Post('register')
+  @Public()
+  register(@Body() body) {
+    return this.userService.register(body);
+  }
 }

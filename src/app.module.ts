@@ -4,7 +4,9 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { RedisModule } from './modules/redis/redis.module';
 import * as dotenv from 'dotenv';
+
 
 dotenv.config(); // 加载 .env 文件中的环境变量
 
@@ -20,6 +22,7 @@ dotenv.config(); // 加载 .env 文件中的环境变量
       autoLoadEntities: true,// 自动加载实体
       // synchronize: true,// 只能用于生产环境，生产环境下会自动创建表结构
     }),
+    RedisModule,
     UserModule,
     AuthModule,
   ],
