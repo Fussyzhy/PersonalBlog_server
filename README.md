@@ -1,32 +1,32 @@
-# 个人博客服务端
+# 🚀 个人博客服务端
 
 这是一个基于NestJS框架开发的个人博客后端服务，提供用户认证、注册、登录等功能。
 
-## 技术栈
+## 🛠️ 技术栈
 
-- **NestJS**: 基于Node.js的服务端框架
-- **TypeORM**: ORM框架，用于数据库操作
-- **MySQL**: 数据库
-- **Redis**: 用于缓存和存储临时数据（如验证码）
-- **JWT**: 用于用户认证和授权
-- **Nodemailer**: 用于发送邮件（验证码）
+- **NestJS**: 🔥 基于Node.js的服务端框架
+- **TypeORM**: 🗃️ ORM框架，用于数据库操作
+- **MySQL**: 💾 数据库
+- **Redis**: ⚡ 用于缓存和存储临时数据（如验证码）
+- **JWT**: 🔐 用于用户认证和授权
+- **Nodemailer**: 📧 用于发送邮件（验证码）
 
-## 功能特性
+## ✨ 功能特性
 
-- 用户注册与登录
-- 邮箱验证码发送
-- JWT认证
-- 用户管理（增删改查）
+- 👤 用户注册与登录
+- 📩 邮箱验证码发送
+- 🔒 JWT认证
+- 👥 用户管理（增删改查）
 
-## 安装与运行
+## 📦 安装与运行
 
-### 前置条件
+### 📋 前置条件
 
 - Node.js (v20+)
 - MySQL
 - Redis
 
-### 安装依赖
+### 📥 安装依赖
 
 ```bash
 npm install
@@ -34,7 +34,7 @@ npm install
 yarn
 ```
 
-### 环境变量配置
+### ⚙️ 环境变量配置
 
 在项目根目录创建`.env`文件，配置以下环境变量：
 
@@ -60,9 +60,9 @@ JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=7d
 ```
 
-### 运行项目
+### 🚀 运行项目
 
-#### 开发环境
+#### 🔧 开发环境
 
 ```bash
 npm run dev
@@ -70,7 +70,7 @@ npm run dev
 yarn dev
 ```
 
-#### 生产环境
+#### 🏭 生产环境
 
 ```bash
 npm run build
@@ -80,7 +80,7 @@ yarn build
 yarn start:prod
 ```
 
-## 项目结构
+## 📁 项目结构
 
 ```
 src/
@@ -96,13 +96,13 @@ src/
 └── untils/                # 工具函数
 ```
 
-## API文档
+## 📚 API文档
 
-### 认证相关
+### 🔐 认证相关
 
 - `POST /auth/login`: 用户登录
 
-### 用户相关
+### 👤 用户相关
 
 - `GET /user/getUser/:id`: 获取指定用户信息
 - `GET /user/getUser`: 获取所有用户信息
@@ -111,9 +111,9 @@ src/
 - `POST /user/getEmail`: 发送验证码邮件
 - `POST /user/register`: 用户注册
 
-## 测试
+## 🧪 测试
 
-### 单元测试
+### 🔍 单元测试
 
 ```bash
 npm run test
@@ -121,7 +121,7 @@ npm run test
 yarn test
 ```
 
-### E2E测试
+### 🔬 E2E测试
 
 ```bash
 npm run test:e2e
@@ -129,6 +129,6 @@ npm run test:e2e
 yarn test:e2e
 ```
 
-## 许可证
+## 📄 许可证
 
 [MIT](LICENSE)

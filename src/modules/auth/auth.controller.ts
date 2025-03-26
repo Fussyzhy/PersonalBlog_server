@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, HttpCode, HttpStatus } from "@nestjs/common";
+import { Body, Controller, Get, Post, HttpCode, HttpStatus, Param } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { success, error } from "src/untils";
 import { Public } from "./public.decorator";
@@ -19,6 +19,11 @@ export class AuthController {
     .catch(err => {
       return error (err)
     })
+  }
+
+  @Get('getInfo/:token')
+  getInfo(@Param('token') token: string) {
+    return this.authService.getUserByToken(token)
   }
 
 }

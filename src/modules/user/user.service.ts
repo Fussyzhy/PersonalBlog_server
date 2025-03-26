@@ -78,7 +78,7 @@ export class UserService {
       newUser.password = md5(body.password);
       newUser.avatar = '1';
       newUser.role = 1;
-      newUser.nickname = '1';
+      newUser.nickname = body.username;
       this.userRepository.save(newUser);
       return {
         code: 200,
