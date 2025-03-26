@@ -9,7 +9,7 @@ async function bootstrap() {
   // 启用CORS支持
   app.enableCors();
   // 监听端口
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 7878;
   await app.listen(port, '::');
 
   const url = `http://localhost:${port}`;

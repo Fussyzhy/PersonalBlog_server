@@ -1,98 +1,134 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 个人博客服务端
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+这是一个基于NestJS框架开发的个人博客后端服务，提供用户认证、注册、登录等功能。
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 技术栈
 
-## Description
+- **NestJS**: 基于Node.js的服务端框架
+- **TypeORM**: ORM框架，用于数据库操作
+- **MySQL**: 数据库
+- **Redis**: 用于缓存和存储临时数据（如验证码）
+- **JWT**: 用于用户认证和授权
+- **Nodemailer**: 用于发送邮件（验证码）
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 功能特性
 
-## Project setup
+- 用户注册与登录
+- 邮箱验证码发送
+- JWT认证
+- 用户管理（增删改查）
 
-```bash
-$ yarn install
-```
+## 安装与运行
 
-## Compile and run the project
+### 前置条件
+
+- Node.js (v20+)
+- MySQL
+- Redis
+
+### 安装依赖
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+npm install
+# 或
+yarn
 ```
 
-## Run tests
+### 环境变量配置
+
+在项目根目录创建`.env`文件，配置以下环境变量：
+
+```
+# 服务器配置
+PORT=7878
+
+# 数据库配置
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=personal_blog
+
+# Redis配置
+REDIS_HOST=localhost
+REDIS_PORT=6380
+REDIS_PASSWORD=your_redis_password
+REDIS_DB=0
+
+# JWT配置
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=7d
+```
+
+### 运行项目
+
+#### 开发环境
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+npm run dev
+# 或
+yarn dev
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+#### 生产环境
 
 ```bash
-$ yarn install -g mau
-$ mau deploy
+npm run build
+npm run start:prod
+# 或
+yarn build
+yarn start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 项目结构
 
-## Resources
+```
+src/
+├── app.controller.ts      # 应用控制器
+├── app.module.ts          # 应用模块（根模块）
+├── app.service.ts         # 应用服务
+├── main.ts                # 应用入口文件
+├── modules/               # 功能模块
+│   ├── auth/              # 认证模块
+│   ├── email/             # 邮件模块
+│   ├── redis/             # Redis模块
+│   └── user/              # 用户模块
+└── untils/                # 工具函数
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+## API文档
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### 认证相关
 
-## Support
+- `POST /auth/login`: 用户登录
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 用户相关
 
-## Stay in touch
+- `GET /user/getUser/:id`: 获取指定用户信息
+- `GET /user/getUser`: 获取所有用户信息
+- `POST /user/addUser`: 添加用户
+- `DELETE /user/deleteUser/:id`: 删除用户
+- `POST /user/getEmail`: 发送验证码邮件
+- `POST /user/register`: 用户注册
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 测试
 
-## License
+### 单元测试
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+npm run test
+# 或
+yarn test
+```
+
+### E2E测试
+
+```bash
+npm run test:e2e
+# 或
+yarn test:e2e
+```
+
+## 许可证
+
+[MIT](LICENSE)
